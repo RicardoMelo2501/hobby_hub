@@ -52,6 +52,9 @@ python manage.py migrate
 # Acessar o Shell
 python manage.py shell
 
+# Criando Super User (/admin)
+python manage.py createsuperuser
+
 ###########
 # CUIDADO #
 ###########
