@@ -1,0 +1,18 @@
+{%extends 'base/header.html'%}
+
+{% block 'conteudo' %}
+  <div class="form-wrapper">
+
+    <h2>Login {{ user }}</h2>
+
+    {% if user.is_authenticated %}
+      <p>
+        Você fez login como {{ user.username }}.
+        Clique <a href="{% url 'home:logout' %}">aqui</a>
+        para sair.
+      </p>
+    {% else %}
+      {% include 'user/_user-form.html' %}
+    {% endif %}
+  </div>
+{% endblock 'conteudo' %}

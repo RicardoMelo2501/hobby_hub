@@ -5,29 +5,29 @@
 {%endblock%}
 
 {%block 'conteudo'%}
-
-        <h1>
-                <small class="text-muted">Version 2.1</small>   
-        </h1>        
+    <div  class="center-block" id="login" style="width: 40%;">
+        {% comment %} <form class="form-horizontal form" name="LoginForm"  method="post">
+            {% csrf_token %}
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                {% endif %}
         
-        <div class="card">
-                <h4 class="card-header">Requirements</h4>
-                <div class="card-body">
-                        <ul>
-                                <li>JQuery</li>
-                                <li>Bootstrap 4 beta-3</li>
-                        </ul>
-
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-secondary">Secondary</button>
-                        <button type="button" class="btn btn-success">Success</button>
-                        <button type="button" class="btn btn-danger">Danger</button>
-                        <button type="button" class="btn btn-warning">Warning</button>
-                        <button type="button" class="btn btn-info">Info</button>
-                        <button type="button" class="btn btn-light">Light</button>
-                        <button type="button" class="btn btn-dark">Dark</button>    
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{field.id_for_label}}">{{field.label}}</label> 
+                    {{field}}
+                    {{field.errors}}
                 </div>
-        </div>
+            {% endfor %}
 
+            
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn btn-success">Criar Menu</button>
+                </div>
+            </div>
+        </form> {% endcomment %}
+        <a class=" btn btn-warning btn-sm" href="{% url 'home:register' %}">Cadastrar Usuário<i class="fas fa-sign-out-alt ml-2"></i></a>
+    </div>
 {%endblock%}
 
