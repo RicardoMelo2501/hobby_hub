@@ -38,11 +38,17 @@ pip freeze > requirements.txt
 #### Comando úteis para o Django
 
 Estando num ambiente virtual ou já possuindo todos os requisitos, para rodar o sistema localmente basta digitar:
+Comandos Para Apps:
 
 ```
 # Construir App (Modulos)
 python manage.py startapp nome_da_app
 
+```
+
+Comandos Para Models (Fixtures)
+
+```
 # Criar migrations (Criar migration baseado no models.py)
 python mananage.py makemigrations
 
@@ -52,17 +58,19 @@ python manage.py migrate
 # Acessar o Shell
 python manage.py shell
 
+# Criando Fixtures (Dados Padrões)
+# OBS: O SO importa nessa parte
+# Se for Windows Verifique o se o prompt está no padrão utf8
+# Usando o CMD
+python -Xutf8 manage.py dumpdata --indent 4 app.model > app/fixtures/model.json  && chcp 65001 && type model.json > model.json
+
+```
+
+```
 # Criando Super User (/admin)
 python manage.py createsuperuser
 
-###########
-# CUIDADO #
-###########
-
 # Acessar o Shell do Banco de Dados 
 python manage.py dbshell
-
-# Limpar o banco de Dados
-python manage.py flush
 
 ```

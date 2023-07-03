@@ -1,0 +1,55 @@
+[
+{
+    "model": "menu.menu",
+    "pk": 1,
+    "fields": {
+        "text": "Dashboard",
+        "url_or_path": "home:dashboard",
+        "font_awesome_icon": "fas fa-tachometer-alt",
+        "new_tab": false
+    }
+},
+{
+    "model": "menu.menu",
+    "pk": 13,
+    "fields": {
+        "text": "Usuários",
+        "url_or_path": "asd",
+        "font_awesome_icon": "fas fa-users",
+        "new_tab": false
+    }
+},
+{
+    "model": "menu.submenu",
+    "pk": 1,
+    "fields": {
+        "text": "Crediário",
+        "url_or_path": "home:index",
+        "font_awesome_icon": "fas fa-address-card",
+        "parent_menu": 1,
+        "new_tab": false
+    }
+},
+{
+    "model": "menu.submenu",
+    "pk": 2,
+    "fields": {
+        "text": "Cadastrar Usuário",
+        "url_or_path": "home:register",
+        "font_awesome_icon": "fas fa-user-plus",
+        "parent_menu": 13,
+        "new_tab": false
+    }
+},
+{
+    "model": "menu.submenu",
+    "pk": 3,
+    "fields": {
+        "text": "Editar Usuário",
+        "url_or_path": "home:list",
+        "font_awesome_icon": "fas fa-user-edit",
+        "parent_menu": 13,
+        "new_tab": false
+    }
+}
+]
