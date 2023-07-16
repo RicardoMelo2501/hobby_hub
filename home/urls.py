@@ -11,4 +11,5 @@ urlpatterns = [
     path('register/', user_view.register, name='register'),
     path('list/', user_view.index, name='list'),
     path('edit/<int:pk>/', user_view.update, name='edit'),
+    path('default/', home_view.default_page, name='defalt_page'),
 ]

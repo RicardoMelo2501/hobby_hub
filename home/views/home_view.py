@@ -17,3 +17,15 @@ def home(request):
     }
 
     return render(request, 'home/index.html', context)
+
+def default_page(request):
+    dataMenus = Menu.objects.all()
+    dataSubMenus = SubMenu.objects.all()
+
+    context = { 
+        'menus': dataMenus, 
+        'sub_menus': dataSubMenus,
+        # 'form' : myForm
+    }
+
+    return render(request, 'default_pages/index.html', context)

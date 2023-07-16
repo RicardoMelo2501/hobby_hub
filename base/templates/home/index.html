@@ -1,33 +1,25 @@
 {%extends 'base/header.html'%}
 
+
 {%block 'titulo'%}
-        Home
+Home
 {%endblock%}
 
-{%block 'conteudo'%}
-    <div  class="center-block" id="login" style="width: 40%;">
-        {% comment %} <form class="form-horizontal form" name="LoginForm"  method="post">
-            {% csrf_token %}
-                {% if next %}
-                    <input type="hidden" name="next" value="{{ next }}" />
-                {% endif %}
-        
-            {% for field in form %}
-                <div class="form-group">
-                    <label for="{{field.id_for_label}}">{{field.label}}</label> 
-                    {{field}}
-                    {{field.errors}}
-                </div>
-            {% endfor %}
+{% block 'navbar' %}
+    {%include 'navbar/navbar.html' %}    
+{% endblock%}
 
-            
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" class="btn btn-success">Criar Menu</button>
-                </div>
+{%block 'conteudo'%}
+
+    <div class="card">
+        <div class="card-body">
+            <div class="p-4">
+                <h1>Seja bem Vindo !</h1>
             </div>
-        </form> {% endcomment %}
-        <a class=" btn btn-warning btn-sm" href="{% url 'home:register' %}">Cadastrar Usuário<i class="fas fa-sign-out-alt ml-2"></i></a>
+            <div>
+                <button type="submit" class="btn btn-success">Criar Menu</button>
+            </div>
+        </div>        
     </div>
 {%endblock%}
 

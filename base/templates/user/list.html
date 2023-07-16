@@ -1,8 +1,32 @@
 {%extends 'base/header.html'%}
 
+{%block 'titulo'%}
+Usuários
+{%endblock%}
+
+{% block 'navbar' %}
+    {%include 'navbar/navbar.html' %}    
+{% endblock%}
+
 {% block 'conteudo' %}
 
-        <h2 class="mb-4" >Usuário Cadastrados</h2>
+<div class="card">
+    <div class="card-body">
+        
+        <h1>
+            Página Padrão
+        </h1>
+    </div>
+</div>
+
+        <div class="col-12 row d-flex justify-content-center">
+            <div>
+                <h2 class="mb-4" >Usuário Cadastrados</h2>
+            </div>
+            <div>
+                <a class=" btn btn-warning btn-sm" href="{% url 'home:register' %}">Cadastrar Usuário<i class="fas fa-sign-out-alt ml-2"></i></a>
+            </div>
+        </div>
     
         <table class="table">
             <thead>
@@ -14,23 +38,22 @@
                 </tr>
             </thead>
             <tbody>                            
-            {% for usuario in usuarios %}                
-                <tr>
-                    <th scope="row">{{usuario.id}}</th>
-                    <td>{{usuario.username}}</td>
-                    <td>{{usuario.first_name}}</td>
-                    <td>{{usuario.email}}</td>
-                    <td>
-                        <a href="{% url 'home:edit' pk=usuario.pk %}" type="button" class="btn btn-warning btn-sm">
-                            <i class="fas fa-pencil-alt"></i>
-                        </a>
-                        <a type="button" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-              
+                {% for usuario in usuarios %}                
+                    <tr>
+                        <th scope="row">{{usuario.id}}</th>
+                        <td>{{usuario.username}}</td>
+                        <td>{{usuario.first_name}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td>
+                            <a href="{% url 'home:edit' pk=usuario.pk %}" type="button" class="btn btn-warning btn-sm">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a type="button" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}              
             </tbody>
         </table>
 

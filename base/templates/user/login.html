@@ -1,18 +1,26 @@
 {%extends 'base/header.html'%}
 
 {% block 'conteudo' %}
-  <div class="form-wrapper">
 
-    <h2>Login {{ user }}</h2>
-
-    {% if user.is_authenticated %}
-      <p>
-        Você fez login como {{ user.username }}.
-        Clique <a href="{% url 'home:logout' %}">aqui</a>
-        para sair.
-      </p>
-    {% else %}
-      {% include 'user/_user-form.html' %}
-    {% endif %}
+<div class="col-12 d-flex justify-content-center">
+  <div class="col-3 card ">
+    <div class="card-body form-wrapper">
+      
+      <div class="text-center">
+        <h2>Login</h2>
+      </div>
+      
+      {% include 'alerts/general.html' %}
+        {% if user.is_authenticated %}
+          <p>
+            Você fez login como {{ user.username }}.
+            Clique <a href="{% url 'home:logout' %}">aqui</a>
+            para sair.
+          </p>
+        {% else %}
+          {% include 'user/_user-form.html' %}
+        {% endif %}
+    </div>
   </div>
+</div>
 {% endblock 'conteudo' %}

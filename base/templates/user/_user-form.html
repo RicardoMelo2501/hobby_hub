@@ -12,8 +12,8 @@ method="POST"
       {{ field }}
       {{ field.errors }}
       
-      {% if form.non_field_errors %}
-        <div class="form-content">
+      {% if form.non_field_errors and field.id_for_label != 'id_password' %}
+        <div class="form-content pt-4">
           <div class="form-group">
             <div class="message error">
               {{ form.non_field_errors }}
@@ -25,14 +25,13 @@ method="POST"
       {% if field.help_text %}
         <p class="help-text">{{ field.help_text }}</p>
       {% endif %}
-    </>
   {% endfor %}
 </div>
 
 
 <div class="form-content">
   <div class="form-group">
-    <button class="btn btn-success" type="submit">Send</button>
+    <button class="btn btn-success btn-block" type="submit">Logar</button>
   </div>
 </div>
 
