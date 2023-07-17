@@ -1,8 +1,5 @@
 from django.shortcuts import render, redirect
-from menu.models import Menu, SubMenu
-
 from django.contrib import auth, messages
-from menu.forms import myForm
 from home.forms.user_form import CustomAuthenticationForm, RegisterForm, RegisterUpdateForm
 
 from django.contrib.auth.decorators import login_required

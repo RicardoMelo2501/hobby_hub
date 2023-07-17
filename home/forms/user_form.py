@@ -19,22 +19,31 @@ class RegisterForm(UserCreationForm):
         min_length=3,
         widget = forms.TextInput(attrs={"class": "form-control"})
     )
+
     last_name = forms.CharField(
         required=True,
         min_length=3,
         widget = forms.TextInput(attrs={"class": "form-control"})
     )
-    email = forms.EmailField(widget = forms.TextInput(attrs={"class": "form-control"}))
 
-    username = forms.CharField(widget = forms.TextInput(attrs={"class": "form-control"}))
+    email = forms.EmailField(
+        widget = forms.TextInput(attrs={"class": "form-control"})
+    )
+
+    username = forms.CharField(
+        widget = forms.TextInput(attrs={"class": "form-control"})
+    )
+
     password1 = forms.CharField(label="Password",
         strip=False,
         widget=forms.PasswordInput(attrs={"autocomplete": "new-password","class": "form-control"}),
         help_text=password_validation.password_validators_help_text_html(),
         required=False,
     )
-    password2 = forms.CharField(widget = forms.PasswordInput(attrs={"class": "form-control"}))
 
+    password2 = forms.CharField(
+        widget = forms.PasswordInput(attrs={"class": "form-control"})
+    )
     class Meta:
         model = User
         fields = (
@@ -72,32 +81,39 @@ class RegisterUpdateForm(forms.ModelForm):
         min_length=2,
         max_length=30,
         required=True,
-        help_text='Required.',
         error_messages={
             'min_length': 'Please, add more than 2 letters.'
-        }
+        },
+        widget = forms.TextInput(attrs={"class": "form-control"})
     )
+
     last_name = forms.CharField(
         min_length=2,
         max_length=30,
-        required=True,
-        help_text='Required.'
+        widget = forms.TextInput(attrs={"class": "form-control"})
+    )
+
+    email = forms.EmailField(
+        widget = forms.TextInput(attrs={"class": "form-control"})
+    )
+
+    username = forms.CharField(
+        widget = forms.TextInput(attrs={"class": "form-control"})
     )
 
     password1 = forms.CharField(
         label="Password",
         strip=False,
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", "class": "form-control"}),
         help_text=password_validation.password_validators_help_text_html(),
-        required=False,
+        required=False
     )
 
     password2 = forms.CharField(
         label="Password 2",
         strip=False,
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
-        help_text='Use the same password as before.',
-        required=False,
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password", "class": "form-control"}),
+        required=False
     )
 
     class Meta:

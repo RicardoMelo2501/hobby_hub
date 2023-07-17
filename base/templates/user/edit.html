@@ -1,8 +1,24 @@
 {%extends 'base/header.html'%}
 
+{%block 'titulo'%}
+Usuários
+{%endblock%}
+
+{% block 'navbar' %}
+    {%include 'navbar/navbar.html' %}    
+{% endblock%}
+
 {% block 'conteudo' %}
 
-        <h2 class="mb-4" >Editar Usuário</h2>
-        {% include 'user/_user-form.html' %}
+<div class="card">
+        <div class="card-body">
+                <div class="p-4">
+                        <h2 class="mb-4" >Editar Usuário</h2>
+                </div>
+                        <div>
+                        {% include 'user/_user-form.html' %}
+                        </div>
+                </div>        
+        </div>
 
 {% endblock 'conteudo' %}
