@@ -29,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# FORM SUBMISSION
+# Comment out the following line and place your railway URL, and your production URL in the array.
+CSRF_TRUSTED_ORIGINS = ["*"]
+
 # Padronizando Tags do Contrib Messages Para o Bootstrap 4
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
