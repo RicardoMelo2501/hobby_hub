@@ -76,7 +76,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'home.context_processors.default_context_values'
+                'home.context_processors.default_context_values',
+                'whitenoise.middleware.WhiteNoiseMiddleware',
             ],
         },
     },
@@ -145,8 +146,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'base' / 'static',
-    BASE_DIR / 'staticfiles'
+    BASE_DIR / 'base' / 'static'
 ]
 
 # Default primary key field type
