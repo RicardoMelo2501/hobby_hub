@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-di5yswm7^vhdr9h)disfiqkiuwaa1@y18$yy2i@(q881sz!n1i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Padronizando Tags do Contrib Messages Para o Bootstrap 4
 MESSAGE_TAGS = {
@@ -139,6 +139,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 
 STATIC_URL = 'static/'
 
