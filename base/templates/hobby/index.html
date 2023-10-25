@@ -11,47 +11,162 @@ Home
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Navbar</a>
-        
+            <img src="../../../media/hobby/logoprojeto.png" alt="logo">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquise por hobbies" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </form>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex row-cols-2 ml-auto justify-content-center">
+                <li class="nav-item active flex-column">
+                <a class="nav-link" href="#"><i class="fas fa-user"></i> Perfil <span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link " href="https://projeto-hobby-hub-3hh4.vercel.app/Sobre"><i class="fas fa-address-card"></i> Sobre</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Perfil</a>
+                <li class="nav-item active">
+                <a class="nav-link " href="https://projeto-hobby-hub-3hh4.vercel.app/"> <i class="fas fa-sign-out-alt"></i> Sair</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link disabled" href="#">Sobre</a>
-                </li>
-                <a href="" class="btn btn-success">Cadastrar Hobby</a>
             </ul>
+            <div>
+                <button class="justify-content-end border-0 bg-transparent m-lg-0">
+                    <a href="" class="btn btn-success">Cadastrar Hobby</a>
+                </button>
+            </div>
             </div>
         </nav>
         <div class="d-flex justify-content-between align-items-center">
             <div class="p-4">
-                <h1 class="text-white">Hobby</h1>
+                <h1 class="text-white">Participando</h1>
             </div>
         </div>
             <div class="row">
                 {% for hobby in hobbies %}
                 <div class="col-sm-8 col-md-3">
-                    <div class="card shadow-lg">
+                    <div class="card shadow-lg border-0">
                         <img src="/media/{{ hobby.imagem }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{ hobby.nome }}</h5>
                             <p class="card-text">{{ hobby.descricao }}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#exampleModalCenter">
+                                Saiba mais
+                            </button>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Descrição</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    ...
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-
+        <div class="p-4">
+            <h1 class="text-white">Hobbies</h1>
+        </div>
+        <div class="Container d-flex justify-content-center">
+            <label class="text-white" for="categoryFilter">Filtrar por Categoria:</label>
+            <select id="categoryFilter" class="form-control">
+                <option value="todos">Todos</option>
+                <option value="esporte">Esporte</option>
+                <option value="arte">Arte</option>
+                <option value="música">Música</option>
+                <!-- Adicione outras categorias conforme necessário -->
+            </select>
+        </div>
+        <div class="row">
+            {% for hobby in hobbies %}
+                <div class="col-sm-8 col-md-3">
+                    <div class="card shadow-lg border-0">
+                        <img src="/media/{{ hobby.imagem }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ hobby.nome }}</h5>
+                            <p class="card-text">{{ hobby.descricao }}</p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#exampleModalCenter">
+                                Saiba mais
+                            </button>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Descrição</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    ...
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination d-flex justify-content-center m-5">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        <div class="m-5">
+            <footer>
+                <ul class="nav justify-content-center">
+                    <a href=""><li class="nav-link" ><i class="fab fa-facebook fa-3x text-white"></i></li></a>
+                    <a href="https://www.instagram.com/hobby.hubb1?igshid=NzZlODBkYWE4Ng%3D%3D&utm_source=qr" target="_blank"><li class="nav-link"><i class="fab fa-instagram fa-3x text-white"></i></li></a>
+                    <a href=""><li class="nav-link"><i class="fab fa-twitter fa-3x text-white"></i></li></a>
+                </ul>
+                <ul class="nav justify-content-center">
+                    <a href=""><li class="nav-link">Home</li></a>
+                    <a href=""><li class="nav-link">Contatos</li></a>
+                    <a href=""><li class="nav-link">Sobre</li></a>
+                </ul>
+                <p class="text-white d-flex justify-content-center mt-2">
+                    Copyright ⓒ2023
+                </p>
+            </footer>
+        </div>
     </div>
 
 {%endblock%}

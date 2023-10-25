@@ -21,7 +21,7 @@
     </title>
 
 </head>
-<body style="background: linear-gradient(180deg,#6700bf,#000 63.97%,#000); background-repeat: no-repeat; height: 1500px;">
+<body style="background: linear-gradient(180deg,#6700bf,#000 63.97%,#000); background-repeat: no-repeat; height: 100%;">
         {% comment %} Optional Nav Bar {% endcomment %}
         {%block 'navbar'%}
                         
@@ -46,3 +46,20 @@
 
 <!-- Import JS -->
 {% include "base/footer.html" %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#categoryFilter").on("change", function() {
+            var selectedCategory = $(this).val();
+            $("#hobbyContainer .col-sm-8.col-md-3").each(function() {
+                var hobbyCategory = $(this).data("categoria");
+                if (selectedCategory === "todos" || selectedCategory === hobbyCategory) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
