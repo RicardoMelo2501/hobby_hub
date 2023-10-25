@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from hobby.models import Hobby
 
 # Create your views here.
-@login_required(login_url='home:login')
+# @login_required(login_url='home:login')
 def index(request):
     hobbyObjects = Hobby.objects.all()
     # dataSubMenus = SubMenu.objects.all()
