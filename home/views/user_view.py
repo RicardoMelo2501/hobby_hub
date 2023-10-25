@@ -72,7 +72,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Usuário registrado')
-            return redirect('home:home')
+            return redirect('home:index')
 
     return render(
         request,
