@@ -7,12 +7,56 @@
     flex-direction: row;
 }
 
-.main_left {
-    background-color: red;
-    width: 50vw;
+.container-left {
+
 }
 
-.main_right {
-    background-color: blue;
-    width: 50vw;
+.container-right {
+    
+}
+
+.container-right form {
+    width: 70%;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: none;
+}
+
+.input-field:focus {
+    outline: none;
+    border: none; 
+    box-shadow: none;
+  }
+
+.form-group label {
+    font-size: 20pt;
+    color: white;
+}
+
+.esqueceu a {
+    text-decoration: underline;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.btn .btn-primary {
+    align-items: center;
+    justify-content: center;
+    background-color: #8A01FF;
+    border: none;
+    color: white;
+}
+
+.btn .btn-primary:hover {
+    width: 40vw;
+    height: 5vh;
+    transition: all 0.5s ease;
 }

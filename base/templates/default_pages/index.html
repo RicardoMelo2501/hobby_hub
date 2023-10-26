@@ -7,11 +7,44 @@ Login
 
 {%block 'conteudo'%}
     <div class="main">
-        <div class="main_left">
+        <div class="container-left w-50 d-flex flex-column justify-content-center min-vh-100 align-items-center">
+            <h1 class="text-white">Bem-vindo!</h1>
             <img src="../../../media/hobby/logoprojeto.png" alt="logo">
         </div>
-        <div class="main_right">
-
+        <div class="container-right w-50 min-vh-100 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="text-white mb-5">Login</h1>
+            <form class="mb-5">
+                <div class="form-group mt-3">
+                    <label for="exampleInputEmail1">Email ou CPF</label>
+                    <div class="input-group">
+                      <input type="email" class="form-control input-field" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-white border-0">
+                            <i class="fas fa-user"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <small id="emailHelp" class="text-white">Nunca compartilhe seu e-mail com mais ninguém.</small>
+                  </div>                  
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Senha</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control input-field" id="exampleInputPassword1">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-white border-0">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>                  
+                <div class="esqueceu">
+                    <a class="text-white font-italic" href="">Esqueceu a senha?</a>
+                </div>
+                <div class="btn mt-4">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">Criar nova conta</button>
+                </div>
+              </form>
         </div>
     </div>
 
