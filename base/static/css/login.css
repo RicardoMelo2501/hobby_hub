@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
-.main {
+.main_login {
     font-family: Lilita One;
     font-weight: 400;
     display: flex;
@@ -8,27 +8,28 @@
 }
 
 .container-left {
-
+    display: flex;
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
 }
 
 .container-right {
-    
+    display: flex;
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
 }
 
 .container-right form {
     width: 70%;
 }
 
-.form-control {
-    border-radius: 10px;
-    border: none;
-}
-
 .input-field:focus {
     outline: none;
     border: none; 
     box-shadow: none;
-  }
+}
 
 .form-group label {
     font-size: 20pt;
@@ -39,7 +40,7 @@
     text-decoration: underline;
 }
 
-.btn {
+.btn_login {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -47,16 +48,63 @@
     align-items: center;
 }
 
-.btn .btn-primary {
+.btn-btn-primary-login, .btn-btn-primary-cadastro {
     align-items: center;
     justify-content: center;
     background-color: #8A01FF;
     border: none;
     color: white;
+    border-radius: 7px;
+    width: 30vw;
+    height: 5vh;
 }
 
-.btn .btn-primary:hover {
+.btn-btn-primary-login:hover, .btn-btn-primary-cadastro:hover {
     width: 40vw;
-    height: 5vh;
+    height: 6vh;
     transition: all 0.5s ease;
 }
+
+@media (max-width: 768px) {
+    .main_login {
+        flex-direction: column;
+    }
+
+    .container-left {
+        display: flex;
+        width: 80vw;
+        justify-content: flex-start;
+        height: 45vh;
+    }
+
+    .container-left img {
+        width: 70vw;
+    }
+
+    .container-right {
+        width: 80vw;
+        height: 50vh;
+    }
+
+    .container-right form {
+        width: 100%;
+    }
+
+    .form-group label {
+        font-size: 18px; 
+    }
+
+    .btn .btn-primary {
+        width: 100%; 
+    }
+
+    .btn .btn-primary:hover {
+        width: 100%;
+        height: auto; 
+    }
+}
+
+
+
+
+

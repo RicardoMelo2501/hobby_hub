@@ -9,14 +9,22 @@
 .navbar {
     max-height: 100%;
     border-radius: 5px;
+    margin-top: 4vh;
+    height: 10vh;
+    transition: transform 0.3s ease;
+}
+
+.navbar:hover {
+    transform: scaleY(1.1);
 }
 
 .navbar img {
     width: 5vw;
+    min-width: 4vw;
 }
 
 .nav-item {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .btn-custom {
@@ -31,6 +39,30 @@
     transition: all 0.4s ease;
 }
 
-.Container {
-    width: 20vw;
+.container-filter {
+    width: 30vw;
+    margin-bottom: 5vh;
+    margin-top: 1vh;
+}
+
+.form-control-filter {
+    width: 15vw;
+}
+
+@media (max-width: 768px) {
+    .navbar img {
+        width: 11vw;
+    }
+
+    .container-filter {
+        width: 70vw;
+    }
+
+    .form-control-filter {
+        width: 35vw;
+    }
+
+    .footer {
+        width: 100%;
+    }
 }
