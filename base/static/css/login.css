@@ -78,7 +78,7 @@
     }
 
     .container-left img {
-        width: 70vw;
+        max-width: 45vw;
     }
 
     .container-right {
@@ -94,13 +94,8 @@
         font-size: 18px; 
     }
 
-    .btn .btn-primary {
+    .btn-btn-primary-login, .btn-btn-primary-cadastro {
         width: 100%; 
-    }
-
-    .btn .btn-primary:hover {
-        width: 100%;
-        height: auto; 
     }
 }
 

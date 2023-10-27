@@ -50,6 +50,10 @@
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        height: auto;
+    }
+
     .navbar img {
         width: 11vw;
     }
