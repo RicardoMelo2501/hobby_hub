@@ -1,23 +1,36 @@
 {%extends 'base/header.html'%}
 
-
 {%block 'titulo'%}
-Usuários
+Cadastrar Usuários
 {%endblock%}
-
-{% block 'navbar' %}
-    {%include 'navbar/navbar.html' %}    
-{% endblock%}
 
 {% block 'conteudo' %}
 
-        <div class="card">
-                <div class="card-body">
-                <div class="p-4">
-                        <h2 class="mb-4" >Cadastrar Usuário</h2>
-                </div>                                    
-                        {% include 'user/_user-form.html' %}
-                </div>        
+<div class="main row d-flex justify-content-center" style="padding-top: 2.5%;">
+        <div class="col-4">
+                <div class="card">
+                        <div class="card-body text-center">
+                                <h1 class="p-3">
+                                        Bem-vindo!
+                                </h1>
+                                <h1 class="p-3">
+                                        Comece criando um perfil e explore a ampla gama de hobbies e eventos.
+                                </h1>
+
+                                <img class="p-3" src="../../../media/hobby/logoprojeto.png" alt="logo">
+                        </div>
+                </div>
         </div>
+        
+        <div class="col-4">
+                <div class=" text-center">
+                        <h2 class="mb-3 text-white" >Criar conta</h2>
+                        <h4 class="mb-3 text-white" >Registre-se com seu Email</h4>
+                </div>                                    
+                {% include 'user/_user-form.html' %}                        
+        </div>
+</div>
+
+
 
 {% endblock 'conteudo' %}

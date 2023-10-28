@@ -13,11 +13,20 @@ Login
         </div>
         <div class="container-right flex-column align-items-center">
             <h1 class="text-white mb-5">Login</h1>
-            <form class="mb-5">
+            
+            <form method='POST' class="mb-5">
+
+              {% csrf_token %}    
+
                 <div class="form-group mt-3">
                     <label for="exampleInputEmail1">Email</label>
                     <div class="input-group">
-                      <input type="email" class="form-control input-field" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input 
+                      {% comment %} type="email"  {% endcomment %}
+                      name="username" 
+                      class="form-control input-field" 
+                      id="exampleInputEmail1" 
+                      aria-describedby="emailHelp">
                       <div class="input-group-prepend">
                         <span class="input-group-text bg-white border-0">
                             <i class="fas fa-user"></i>
@@ -29,7 +38,7 @@ Login
                   <div class="form-group">
                     <label for="exampleInputPassword1">Senha</label>
                     <div class="input-group">
-                      <input type="password" class="form-control input-field" id="exampleInputPassword1">
+                      <input type="password" name="password" class="form-control input-field" id="exampleInputPassword1">
                       <div class="input-group-prepend">
                         <span class="input-group-text bg-white border-0">
                           <i class="fa fa-lock"></i>
@@ -42,7 +51,7 @@ Login
                 </div>
                 <div class="btn_login mt-4">
                     <button type="submit" class="btn-btn-primary-login">Login</button>
-                    <button type="submit" class="btn-btn-primary-cadastro">Criar nova conta</button>
+                    <a href="{% url 'home:register' %}" type="button" class="btn btn-btn-primary-cadastro text-white d-flex align-items-center" style="text-decoration: none;">Criar nova conta</a>
                 </div>
               </form>
         </div>

@@ -7,8 +7,8 @@ method="POST"
 <div class="form-content">
 
   {% for field in form %}
-    <div class="form-group">
-      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    <div class="form-group" >
+      <label style="font-size: 16pt !important;"  for="{{ field.id_for_label }}">{{ field.label }}</label>
       {{ field }}
       {{ field.errors }}
       
@@ -23,7 +23,9 @@ method="POST"
       {% endif %}
       
       {% if field.help_text %}
-        <p class="help-text">{{ field.help_text }}</p>
+        <label class="help-text pt-3" style="font-size: 16pt !important;">
+          {{ field.help_text }}
+        </label>
       {% endif %}
   {% endfor %}
 </div>
@@ -31,7 +33,7 @@ method="POST"
 
 <div class="form-content">
   <div class="form-group">
-    <button class="btn btn-success btn-block" type="submit">Logar</button>
+    <button class="btn btn-success btn-block" type="submit">Cadastrar</button>
   </div>
 </div>
 

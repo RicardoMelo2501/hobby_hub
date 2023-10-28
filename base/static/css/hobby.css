@@ -2,8 +2,8 @@
 
 
 .main {
-    font-family: Lilita One;
-    font-weight: 400;
+    font-family: Lilita One !important;
+    font-weight: 400 !important;
 }
 
 .navbar {
@@ -47,6 +47,13 @@
 
 .form-control-filter {
     width: 15vw;
+}
+
+/* DPS AJEITA  */
+.card-hobby:hover {
+    transform: scaleY(1.05);
+    transform: scaleX(1.05);
+    transition: all 0.4s ease;
 }
 
 @media (max-width: 768px) {

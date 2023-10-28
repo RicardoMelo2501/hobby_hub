@@ -1,15 +1,30 @@
 from django.urls import path
 from .views import home_view, user_view
+from hobby import views 
 
 app_name = 'home'
 
 # /home
 urlpatterns = [
-    path('', home_view.home, name='index'),
+    path('', views.index, name='index'),
+
+    ####### USUÁRIO #######
     path('login/', user_view.login, name='login'),
     path('logout/', user_view.logout, name='logout'),
-    path('register/', user_view.register, name='register'),
-    path('list/', user_view.index, name='list'),
+
+    # MODIFICAR O PERFIL
     path('edit/<int:pk>/', user_view.update, name='edit'),
-    path('default/', home_view.default_page, name='defalt_page'),
+    
+    # VER PERFIL
+    path('profile/<int:pk>/', user_view.profile, name='profile'),
+
+    # CADASTRAR
+    path('register/', user_view.register, name='register'),
+
+    # MODIFICAR A SENHA
+    path('change_password/<int:pk>/', user_view.change_password, name='change_password'),
+
+    # USAR PARA TESTES
+    # path('default/', home_view.default_page, name='defalt_page'),
+    
 ]

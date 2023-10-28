@@ -4,15 +4,14 @@ from django.contrib.auth.decorators import login_required
 from hobby.models import Hobby
 
 # Create your views here.
-# @login_required(login_url='home:login')
+@login_required(login_url='home:login')
 def index(request):
     hobbyObjects = Hobby.objects.all()
-    # dataSubMenus = SubMenu.objects.all()
+    current_user = request.user
 
     context = { 
-        'hobbies': hobbyObjects, 
-        # 'sub_menus': dataSubMenus,
-        # 'form' : myForm
+        'hobbies': hobbyObjects,
+        'usuario_logado': current_user
     }
 
     return render(request, 'hobby/index.html', context)
