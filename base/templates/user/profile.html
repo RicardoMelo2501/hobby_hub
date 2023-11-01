@@ -44,10 +44,57 @@ Perfil
             </tbody>
         </table> {% endcomment %}
 
-        <div>  
-            <h1 class="text-white">{{ usuario.first_name }}</h1>
-            <h1 class="text-white">{{ usuario.email }}</h1>
-            <h1 class="text-white">{{ usuario.username }}</h1>                
+        <div class="main_profile d-flex flex-column align-items-center">
+            <div>
+                <h1>Perfil do usuário</h1>
+            </div>
+
+            <div class="d-flex flex-column align-items-center mt-3">
+                <div class="d-flex mt-1 mb-3 align-items-center justify-content-center" id="imagemPreviewProfile">
+                    <!-- Aqui a imagem carregada será exibida -->
+                  </div>
+                <form>
+                    <div class="form-group">
+                      <label for="imagem">
+                      <div class="d-flex align-items-center justify-content-center">
+                        <input class="input_img" type="file" id="imagemInput" accept="image/*" onchange="carregarImagem(event)">
+                        <label class="change_psswd_profile" for="imagemInput">Alterar foto <i class="far fa-edit pl-2" style="color: #ffffff;"></i></label>
+                      </div>
+                    </div>
+                </form>
+              
+                  <div class="d-flex mt-1 mb-3 align-items-center justify-content-center" id="imagemPreviewProfile">
+                    <!-- Aqui a imagem carregada será exibida -->
+                  </div>
+            </div>
+
+            <div class="text-center">  
+                <p class="text-white">Nome: {{ usuario.first_name }} </p>
+                <p class="text-white">E-mail: {{ usuario.email }}</p>
+                <p class="text-white">Nome de usuário: {{ usuario.username }}</p>                
+            </div>
+
+            <div class="btn_profile d-flex flex-column ">
+                <button type="submit" class="btn btn-secondary">Alterar senha</button>
+                <button type="submit" class="btn btn-danger mt-2">Excluir conta</button>
+            </div>
         </div>
+
+        <script>
+            function carregarImagem(event) {
+              const input = event.target;
+              const preview = document.getElementById('imagemPreviewProfile');
+        
+              if (input.files && input.files[0]) {
+                const reader = new FileReader();
+        
+                reader.onload = function(e) {
+                  preview.innerHTML = `<img src="${e.target.result}" class="img-fluid mt-2" alt="Imagem Carregada">`;
+                }
+        
+                reader.readAsDataURL(input.files[0]);
+              }
+            }
+          </script>
 
 {% endblock 'conteudo' %}
