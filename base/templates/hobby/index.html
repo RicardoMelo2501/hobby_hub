@@ -41,7 +41,7 @@ Home
             </ul>
             <div>
                 <button class="justify-content-end border-0 bg-transparent m-lg-0">
-                    <a href="" class="btn btn-success">Cadastrar Hobby</a>
+                    <a href="{% url "home:add_hobby" %}" class="btn btn-success">Cadastrar Hobby</a>
                 </button>
             </div>
             </div>
@@ -52,10 +52,10 @@ Home
             </div>
         </div>
             <div class="row">
-                {% for hobby in hobbies %}
+                {% for hobby in hobbies_participando %}
                 <div class="col-sm-8 col-md-3">
                     <div class="card card-hobby shadow-lg border-0">
-                        <img src="/media/{{ hobby.imagem }}" class="card-img-top">
+                        <img src="/media/{{ hobby.imagem }}" class="card-img-top" width="250" height="400">
                         <div class="card-body">
                             <h5 class="card-title">{{ hobby.nome }}</h5>
                             <p class="card-text">{{ hobby.descricao }}</p>
@@ -85,7 +85,7 @@ Home
             {% for hobby in hobbies %}
                 <div class="col-sm-8 col-md-3">
                     <div class="card shadow-lg border-0">
-                        <img src="/media/{{ hobby.imagem }}" class="card-img-top">
+                        <img src="/media/{{ hobby.imagem }}" class="card-img-top" width="250" height="400">
                         <div class="card-body">
                             <h5 class="card-title">{{ hobby.nome }}</h5>
                             <p class="card-text">{{ hobby.descricao }}</p>

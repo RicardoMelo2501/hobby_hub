@@ -24,6 +24,10 @@ urlpatterns = [
     # MODIFICAR A SENHA
     path('change_password/<int:pk>/', user_view.change_password, name='change_password'),
 
+    # Hobby
+    path('hobby/add/', views.add, name='add_hobby'),
+    # path('hobby/add/<int:pk>/', views.add, name='add_hobby'),
+
     # USAR PARA TESTES
     # path('default/', home_view.default_page, name='defalt_page'),
     
