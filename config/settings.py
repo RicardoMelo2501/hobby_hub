@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 
 # FORM SUBMISSION
 # Comment out the following line and place your railway URL, and your production URL in the array.
-CSRF_TRUSTED_ORIGINS = ["https://djangobase-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://hobbyhubback-production.up.railway.app"]
 
 # Padronizando Tags do Contrib Messages Para o Bootstrap 4
 MESSAGE_TAGS = {
