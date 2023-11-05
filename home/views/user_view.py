@@ -16,17 +16,20 @@ from home.models import UserProfile
 def profile(request, pk):
     UserTable = get_user_model()
     user = UserTable.objects.get(pk=pk)
+
     try:
         photo = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
         photo = None
 
     if request.method == 'POST':
-        if UserProfile.objects.get(user=user) :
+        try:
             UserProfile.objects.get(user=user).delete()
-
-        avataObject = UserProfile(user=user, avatar=request.FILES.get('avatar'))
-        avataObject.save()
+            avataObject = UserProfile(user=user, avatar=request.FILES.get('avatar'))
+            avataObject.save()
+        except UserProfile.DoesNotExist:
+            avataObject = UserProfile(user=user, avatar=request.FILES.get('avatar'))
+            avataObject.save()
 
         return redirect('home:index')
     
