@@ -16,7 +16,10 @@ from home.models import UserProfile
 def profile(request, pk):
     UserTable = get_user_model()
     user = UserTable.objects.get(pk=pk)
-    photo = UserProfile.objects.get(user=user)
+    try:
+        photo = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        photo = None
 
     if request.method == 'POST':
         if UserProfile.objects.get(user=user) :

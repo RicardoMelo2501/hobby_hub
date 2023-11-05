@@ -14,7 +14,11 @@ Perfil
             <div class="d-flex flex-column align-items-center mt-3">
                 <div class="d-flex mt-1 mb-3 align-items-center justify-content-center" id="imagemPreviewProfile">
                     <!-- Aqui a imagem carregada será exibida -->
-                    <img src="/media/{{photo.avatar}}" class="card-img-top img-fluid mt-2" width="250" height="400">
+                    {% if photo == None %}
+                        <img src="/media/sistema/user.png" class="card-img-top img-fluid mt-2" width="250" height="400">
+                    {% else %}
+                        <img src="/media/{{photo.avatar}}" class="card-img-top img-fluid mt-2" width="250" height="400">    
+                    {% endif %}
                 </div>
 
                 <form method="POST" enctype="multipart/form-data">
