@@ -26,8 +26,19 @@ class Hobby(models.Model):
     imagem = models.ImageField(upload_to='hobby', null=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     descricao = models.TextField(null=False)
+    # Criador do Hobby
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
 
     def __str__(self):
         return self.nome
+    
+class Participante(models.Model):
+    class Meta:
+        verbose_name = 'Participante'
+        verbose_name_plural = 'Participantes'
+
+    hobby = models.ForeignKey(Hobby, on_delete=models.CASCADE, related_name='participantes')
+    user_participante =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
+
 

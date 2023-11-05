@@ -1,24 +1,61 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from hobby.models import Hobby, Categoria
+from hobby.models import Hobby, Categoria, Participante
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 # Create your views here.
 @login_required(login_url='home:login')
 def index(request):
     current_user = request.user
-    
+    valor_filtro = ''
+    CategoriaObjects = Categoria.objects.all()
+    # TODOS OS HOBBIES
     hobbyObjects = Hobby.objects.all()
-    hobbyParticipando = Hobby.objects.filter(usuario=current_user)
+    # HOBBIES QUE EU CADASTREI
+    hobbyParticipandoCriado = Hobby.objects.filter(usuario=current_user)
+    # HOBBIES QUE EU ME INSCREVI
+    participantes_do_usuario = Participante.objects.filter(user_participante=current_user)
+    # Acesse os objetos Hobby relacionados aos Participantes do usuário
+    hobbyParticipandoRegistrado_list = Hobby.objects.filter(participantes__in=participantes_do_usuario)
+
+    if request.method == 'POST' and request.POST.get('filtro') != "" :
+        valor_filtro = request.POST.get('filtro')
+        # TODOS OS HOBBIES
+        hobbyObjects = Hobby.objects.filter(nome__icontains=request.POST.get('filtro'))
+        # HOBBIES QUE EU CADASTREI
+        hobbyParticipandoCriado = Hobby.objects.filter(nome__icontains=request.POST.get('filtro'))
+        # HOBBIES QUE EU ME INSCREVI
+        participantes_do_usuario = Participante.objects.get(nome__icontains=request.POST.get('filtro'))
+        # Acesse os objetos Hobby relacionados aos Participantes do usuário
+        hobbyParticipandoRegistrado_list = Hobby.objects.filter(participantes__in=participantes_do_usuario)
+
+    paginator  = Paginator(hobbyObjects, 4)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
     context = { 
+        'valor_filtro': valor_filtro,
+        'categorias': CategoriaObjects,
         'hobbies': hobbyObjects,
-        'hobbies_participando': hobbyParticipando,
-        'usuario_logado': current_user
+        'hobbies_participando_criado': hobbyParticipandoCriado,
+        'hobbies_participando_registrado': hobbyParticipandoRegistrado_list,
+        'usuario_logado': current_user,
+        "page_obj": page_obj
     }
 
     return render(request, 'hobby/index.html', context)
+
+def add_participacao(request, pk):
+    current_user = request.user
+
+    hobby_escolhido = Hobby.objects.get(id=pk)
+    usuario = User.objects.get(id=current_user.id)
+
+    new_participacao = Participante(hobby=hobby_escolhido, user_participante=usuario)
+    new_participacao.save()
+    return redirect('home:index')
 
 def add(request) :
 
@@ -51,3 +88,10 @@ def add(request) :
     }
 
     return render(request, 'hobby/cadastrar.html', context)
+
+def delete(request, pk):
+
+    hobbyObject = Hobby.objects.get(id=pk)
+    hobbyObject.delete()
+
+    return redirect('home:index')

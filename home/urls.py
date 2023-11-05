@@ -26,6 +26,8 @@ urlpatterns = [
 
     # Hobby
     path('hobby/add/', views.add, name='add_hobby'),
+    path('hobby/delete/<int:pk>/', views.delete, name='delete_hobby'),
+    path('hobby/participar/<int:pk>/', views.add_participacao, name='participar_hobby'),
     # path('hobby/add/<int:pk>/', views.add, name='add_hobby'),
 
     # USAR PARA TESTES
