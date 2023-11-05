@@ -65,5 +65,16 @@
                 }
             });
         });
+
+        $('#categoryFilter').on('change', function() {
+            if (this.value == 0) {
+                $(".hobbyContainer").show()
+            } else {
+                $(".hobbyContainer").hide()
+                $(".categoria-" + this.value).show()
+            }
+        });
+
+        console.log("test")
     });
 </script>

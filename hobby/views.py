@@ -27,9 +27,9 @@ def index(request):
         # HOBBIES QUE EU CADASTREI
         hobbyParticipandoCriado = Hobby.objects.filter(nome__icontains=request.POST.get('filtro'))
         # HOBBIES QUE EU ME INSCREVI
-        participantes_do_usuario = Participante.objects.get(nome__icontains=request.POST.get('filtro'))
+        participantes_do_usuario = Participante.objects.filter(user_participante=current_user)
         # Acesse os objetos Hobby relacionados aos Participantes do usuário
-        hobbyParticipandoRegistrado_list = Hobby.objects.filter(participantes__in=participantes_do_usuario)
+        hobbyParticipandoRegistrado_list = Hobby.objects.filter(participantes__in=participantes_do_usuario, nome__icontains=request.POST.get('filtro'))
 
     paginator  = Paginator(hobbyObjects, 4)
     page_number = request.GET.get("page")
@@ -47,6 +47,34 @@ def index(request):
 
     return render(request, 'hobby/index.html', context)
 
+# Create your views here.
+@login_required(login_url='home:login')
+def list_hobby(request):
+    current_user = request.user
+    valor_filtro = ''
+    CategoriaObjects = Categoria.objects.all()
+    # TODOS OS HOBBIES
+    hobbyObjects = Hobby.objects.all()
+
+    if request.method == 'POST' and request.POST.get('filtro') != "" :
+        valor_filtro = request.POST.get('filtro')
+        # TODOS OS HOBBIES
+        hobbyObjects = Hobby.objects.filter(nome__icontains=request.POST.get('filtro'))
+
+    paginator  = Paginator(hobbyObjects, 8)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = { 
+        'valor_filtro': valor_filtro,
+        'categorias': CategoriaObjects,
+        'hobbies': hobbyObjects,
+        'usuario_logado': current_user,
+        "page_obj": page_obj
+    }
+
+    return render(request, 'hobby/list.html', context)
+
 def add_participacao(request, pk):
     current_user = request.user
 
@@ -63,6 +91,11 @@ def add(request) :
     CategoriaObjects = Categoria.objects.all()
 
     if request.method == 'POST':
+
+        if request.FILES.get('imagem'):
+            imagem = request.FILES.get('imagem')
+        else :
+            imagem = 'sistema/default.webp'
         
         categoria = Categoria.objects.get(id=request.POST.get('categoria'))
         usuario = User.objects.get(id=current_user.id)
@@ -72,7 +105,7 @@ def add(request) :
             local=request.POST.get('local'),
             data=request.POST.get('data'),
             time=request.POST.get('time'),
-            imagem=request.FILES.get('imagem'),
+            imagem=imagem,
             categoria = categoria,
             descricao=request.POST.get('descricao'),
             usuario=usuario,

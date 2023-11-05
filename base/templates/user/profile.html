@@ -6,44 +6,6 @@ Perfil
 
 {% block 'conteudo' %}
 
-        <!-- <div class="col-12 row d-flex justify-content-between">
-            <div>
-                <h2 class="mb-4" >Usuário Cadastrados</h2>
-            </div>
-            <div>
-                <a class=" btn btn-success btn-sm" href="{% url 'home:register' %}">Cadastrar Usuário<i class="fas fa-plus ml-2"></i></a>
-            </div>
-        </div> -->
-    
-        {% comment %} <table class="table table-dark table-hover">
-            <thead>
-                <tr>
-                <th scope="col" class="text-center">Id</th>
-                <th scope="col" class="text-center">Usuário</th>
-                <th scope="col" class="text-center">Nome</th>
-                <th scope="col" class="text-center">Email</th>
-                </tr>
-            </thead>
-            <tbody>                            
-                {% for usuario in usuarios %}                
-                    <tr>
-                        <th scope="row" class="text-center">{{usuario.id}}</th>
-                        <td class="text-center">{{usuario.username}}</td>
-                        <td class="text-center">{{usuario.first_name}}</td>
-                        <td class="text-center">{{usuario.email}}</td>
-                        <td class="text-center">
-                            <a href="{% url 'home:edit' pk=usuario.pk %}" type="button" class="btn btn-warning btn-sm">
-                                <i class="fas fa-pencil-alt"></i>
-                            </a>
-                            <a type="button" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}              
-            </tbody>
-        </table> {% endcomment %}
-
         <div class="main_profile d-flex flex-column align-items-center">
             <div>
                 <h1>Perfil do usuário</h1>
@@ -52,14 +14,20 @@ Perfil
             <div class="d-flex flex-column align-items-center mt-3">
                 <div class="d-flex mt-1 mb-3 align-items-center justify-content-center" id="imagemPreviewProfile">
                     <!-- Aqui a imagem carregada será exibida -->
+                    <img src="/media/{{photo.avatar}}" class="card-img-top img-fluid mt-2" width="250" height="400">
                 </div>
 
-                <form>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}  
                     <div class="form-group">
                       <label for="imagem">
                       <div class="d-flex align-items-center justify-content-center">
-                        <input class="input_img" type="file" id="imagemInput" accept="image/*" onchange="carregarImagem(event)">
+                        
+                        <input class="input_img" type="file" name="avatar" id="imagemInput" accept="image/*" onchange="carregarImagem(event)">
                         <label class="change_img_profile" for="imagemInput">Alterar foto <i class="far fa-edit pl-2" style="color: #ffffff;"></i></label>
+                      </div>
+                      <div id="save_button" class="text-center" style="display: none;">
+                          <button class="btn btn-success">Salvar</button>
                       </div>
                     </div>
                 </form>
@@ -67,15 +35,42 @@ Perfil
             </div>
 
             <div class="text-center">  
-                <p class="text-white">Nome: {{ usuario.first_name }} </p>
+                <p class="text-white">Nome: {{ usuario.first_name }} {{ usuario.last_name }} </p>
                 <p class="text-white">E-mail: {{ usuario.email }}</p>
                 <p class="text-white">Nome de usuário: {{ usuario.username }}</p>                
             </div>
 
             <div class="btn_profile d-flex flex-column ">
-                <button type="submit" class="btn btn-secondary">Alterar senha</button>
-                <button type="submit" class="btn btn-danger mt-2">Excluir conta</button>
+                <a type="button" class="btn btn-secondary" href="{% url 'home:change_password' pk=usuario.id %}">
+                    Alterar Senha
+                </a>
+                <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#exampleModalCenter_delete">
+                    Excluir conta
+                </button>
             </div>
+
+            <!-- Modal Delete -->
+            <div class="modal fade" id="exampleModalCenter_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLongTitle">Exclusão de Conta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body text-dark">
+                        Realmente Deseja excluir esse Usuário?
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        
+                        <a type="button" class="btn btn-danger" href="{% url 'home:user_delete' pk=usuario.id %}">
+                            Sim
+                        </a>
+                    </div>
+                </div>
+
         </div>
 
         <script>
@@ -92,6 +87,7 @@ Perfil
         
                 reader.readAsDataURL(input.files[0]);
               }
+              $('#save_button').show()
             }
           </script>
 

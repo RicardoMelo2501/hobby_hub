@@ -1,6 +1,12 @@
 from django.contrib import admin
 from menu.models import Menu
 from menu.models import SubMenu
+from django.contrib import admin
+
+from home.models import UserProfile
+# Register your models here.
+
+admin.site.register(UserProfile)
 
 # Register your models here.
 @admin.register(Menu)

@@ -2,23 +2,37 @@ import json
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
-from home.forms.user_form import CustomAuthenticationForm, RegisterForm, RegisterUpdateForm, PasswordUpdateForm
+from home.forms.user_form import CustomAuthenticationForm, RegisterForm, RegisterUpdateForm, PasswordUpdateForm, PasswordForgotForm
 
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import get_user_model
+
+# Foto do user
+from home.models import UserProfile
 
 # Create your views here.
 @login_required(login_url='home:login')
 def profile(request, pk):
     UserTable = get_user_model()
     user = UserTable.objects.get(pk=pk)
+    photo = UserProfile.objects.get(user=user)
 
+    if request.method == 'POST':
+        if UserProfile.objects.get(user=user) :
+            UserProfile.objects.get(user=user).delete()
+
+        avataObject = UserProfile(user=user, avatar=request.FILES.get('avatar'))
+        avataObject.save()
+
+        return redirect('home:index')
+    
     return render(
         request,
         'user/profile.html',
         {
-            'usuario': user            
+            'usuario': user,
+            'photo': photo            
         }
     )
 
@@ -82,6 +96,14 @@ def register(request):
         }
     )
 
+@login_required(login_url='home:login')
+def delete(request, pk):
+    UserTable = get_user_model()
+    user = UserTable.objects.get(pk=pk)
+    user.delete()
+    return redirect('home:login')
+
+@login_required(login_url='home:login')
 def change_password(request, pk):
     UserTable = get_user_model()
     user = UserTable.objects.get(pk=pk)
@@ -99,6 +121,28 @@ def change_password(request, pk):
     return render(
         request,
         'user/change_password.html',
+        {
+            'form': form
+        }
+    )
+
+def forgot_password(request):
+    UserTable = get_user_model()
+    form = PasswordForgotForm()
+
+    if request.method == 'POST':
+            form = PasswordForgotForm(request.POST)
+            user = UserTable.objects.get(email=request.POST.get('email'))
+
+            if form.is_valid():
+                user.set_password(request.POST.get('password1'))
+                user.save()
+                messages.success(request, 'Senha Alterada')
+                return redirect('home:login')
+
+    return render(
+        request,
+        'user/forgot_password.html',
         {
             'form': form
         }

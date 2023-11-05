@@ -19,10 +19,9 @@ Login
               {% csrf_token %}    
 
                 <div class="form-group mt-3">
-                    <label for="exampleInputEmail1">Email</label>
+                    <label for="exampleInputEmail1">Nome de usuário</label>
                     <div class="input-group">
                       <input 
-                      {% comment %} type="email"  {% endcomment %}
                       name="username" 
                       class="form-control input-field" 
                       id="exampleInputEmail1" 
@@ -33,7 +32,7 @@ Login
                         </span>
                       </div>
                     </div>
-                    <small id="emailHelp" class="text-white">Nunca compartilhe seu e-mail com mais ninguém.</small>
+                    <small id="emailHelp" class="text-white">Nunca compartilhe seus dados com mais ninguém.</small>
                   </div>                  
                   <div class="form-group">
                     <label for="exampleInputPassword1">Senha</label>
@@ -47,7 +46,7 @@ Login
                     </div>
                   </div>                  
                 <div class="esqueceu">
-                    <a class="text-white font-italic" href="">Esqueceu a senha?</a>
+                    <a class="text-white font-italic" href="{% url 'home:forgot_password' %}">Esqueceu a senha?</a>
                 </div>
                 <div class="btn_login mt-4">
                     <button type="submit" class="btn-btn-primary-login">Login</button>
