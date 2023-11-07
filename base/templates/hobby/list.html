@@ -80,13 +80,14 @@ Home
         <div class="row">
             {% for hobby in page_obj %}
                 <div class="hobbyContainer col-sm-8 col-md-3 p-4 categoria-{{hobby.categoria_id}}">
-                    <div class="card shadow-lg border-0">
+                    <div class="card card-hobby shadow-lg border-0">
                         <img src="/media/{{ hobby.imagem }}" class="card-img-top" width="250" height="400">
                         <div class="card-body">
                             <h5 class="card-title">{{ hobby.nome }}</h5>
                             <p class="card-text">Local: {{ hobby.local }}</p>
                             <p class="card-text">Horário: {{ hobby.time }}</p>
                             <p class="card-text">Data: {{ hobby.data }}</p>
+                            <p class="card-text">Criador: {{hobby.usuario}} </p>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#exampleModalCenter_listar_todos_{{hobby.id}}">
                                 Saiba mais

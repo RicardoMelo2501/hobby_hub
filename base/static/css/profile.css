@@ -6,6 +6,19 @@
     color: white;
 }
 
+.btn_voltar {
+    font-size: 40px;
+    position: absolute;
+}
+
+.btn_voltar i {
+    color: white;
+}
+
+.btn_voltar i:hover {
+    color: rgb(226, 226, 226);
+}
+
 .input_img {
     display: none;
 }
@@ -13,11 +26,13 @@
 #imagemPreviewProfile img {
     display: flex;
     min-width: 300px;
-    height: 31vh;
-    width: 15vw;
+    height: 290px;
+    width: 290px;
     border-radius: 50%;
     object-fit: cover;
     object-position: 85% 15%;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.1)
+
 }
 
 .change_img_profile:hover {
@@ -31,5 +46,19 @@
 @media (max-width: 768px) {
     .btn_profile {
         width: 75vw;
+    }
+
+    .btn_voltar {
+        padding-right: 5vw;
+    }
+
+    #imagemPreviewProfile img {
+        display: flex;
+        min-width: 250px;
+        height: 250px;
+        width: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: 85% 15%;
     }
 }
